@@ -24,8 +24,8 @@ app.title = "Automobile Statistics Dashboard"
 #---------------------------------------------------------------------------------
 # Create the dropdown menu options
 dropdown_options = [
-    {'label': '...........', 'value': 'Yearly Statistics'},
-    {'label': 'Recession Period Statistics', 'value': '.........'}
+    {'label': 'Yearly Statistics', 'value': 'Yearly Statistics'},
+    {'label': 'Recession Period Statistics', 'value': 'Recession Period Statistics'}
 ]
 # List of years 
 year_list = [i for i in range(1980, 2024, 1)]
@@ -34,7 +34,7 @@ year_list = [i for i in range(1980, 2024, 1)]
 app.layout = html.Div([
     #TASK 2.1 Add title to the dashboard
     html.H1('Automobile Sales Statistics Dashboard', 
-                                style={'textAlign': 'center', 'color': '#503D36',
+                                style={'textAlign': 'left', 'color': '#503D36',
                                 'font-size': 24}), #May include style for title
     html.Div([#TASK 2.2: Add two dropdown menus
         html.Label("Select Statistics:"),
@@ -74,7 +74,7 @@ def update_input_container(selected_statistics):
     Input(component_id='select-year', component_property='value')])
 
 
-def update_output_container( selected_statistics,input_year):
+def update_output_container(selected_statistics,input_year):
     if selected_statistics == 'Recession Period Statistics':
         # Filter the data for recession periods
         recession_data = data[data['Recession'] == 1]
@@ -122,7 +122,7 @@ def update_output_container( selected_statistics,input_year):
 
         return [
             html.Div(className='chart-item', children=[html.Div(children=R_chart1),html.Div(children=R_chart2)],style={'display':'flex'}),
-            html.Div(className='chart-item', children=[html.Div(children=R_chart2),html.Div(children=R_chart3)],style={'display':'flex'})
+            html.Div(className='chart-item', children=[html.Div(children=R_chart3),html.Div(children=R_chart4)],style={'display':'flex'})
             ]
 
 # TASK 2.6: Create and display graphs for Yearly Report Statistics
